@@ -82,6 +82,6 @@ class CategoryProduct extends Controller
         $category_name = DB::table('tbl_category_product')->where('tbl_category_product.category_id', $category_id)->get();
 
         return view('pages.category.show-category')->with('category', $cate_product)->with('brand', $brand_product)->with('category_by_id', $category_by_id)->with('category_name', $category_name);
-    } 
+    }
    
 }

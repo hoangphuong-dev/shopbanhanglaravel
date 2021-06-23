@@ -118,7 +118,7 @@
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-7">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="sr-only">Toggle navigation</span>
@@ -142,10 +142,14 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
-                        </div>
+                    <div class="col-sm-5">
+                        <form action="{{ URL::to('tim-kiem') }}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="search_box pull-right">
+                                <input type="text" name="keyword_submit" placeholder="Tìm kiếm sản phẩm"/>
+                                <input style="margin-top: 0px" type="submit" name="search_iteams" class="btn btn-primary btn-sm" value="Tìm kiếm">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -224,8 +228,8 @@
                     <div class="left-sidebar">
                         <h2>Danh mục sản phẩm</h2>
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                         @foreach ($category as $key => $cate)
-                         <div class="panel panel-default">
+                           @foreach ($category as $key => $cate)
+                           <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"><a href="{{URL::to('danh-muc-san-pham/'.$cate->category_id) }}">{{ $cate->category_name }}</a></h4>
                             </div>
@@ -287,9 +291,9 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                 <img src="{{('public/fontend/images/home/iframe2.png')}}" alt="" />
-                             </div>
-                             <div class="overlay-icon">
+                                   <img src="{{('public/fontend/images/home/iframe2.png')}}" alt="" />
+                               </div>
+                               <div class="overlay-icon">
                                 <i class="fa fa-play-circle-o"></i>
                             </div>
                         </a>
@@ -302,9 +306,9 @@
                     <div class="video-gallery text-center">
                         <a href="#">
                             <div class="iframe-img">
-                             <img src="{{('public/fontend/images/home/iframe3.png')}}" alt="" />
-                         </div>
-                         <div class="overlay-icon">
+                               <img src="{{('public/fontend/images/home/iframe3.png')}}" alt="" />
+                           </div>
+                           <div class="overlay-icon">
                             <i class="fa fa-play-circle-o"></i>
                         </div>
                     </a>
@@ -317,9 +321,9 @@
                 <div class="video-gallery text-center">
                     <a href="#">
                         <div class="iframe-img">
-                         <img src="{{('public/fontend/images/home/iframe4.png')}}" alt="" />
-                     </div>
-                     <div class="overlay-icon">
+                           <img src="{{('public/fontend/images/home/iframe4.png')}}" alt="" />
+                       </div>
+                       <div class="overlay-icon">
                         <i class="fa fa-play-circle-o"></i>
                     </div>
                 </a>

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 */
 // fontend 
 Route::get('/', 'HomeController@index');
-
 Route::get('/trang-chu','HomeController@index');
+Route::post('tim-kiem','HomeController@search');
 
 
 // Danh mục sản phẩm trang chủ 
@@ -72,4 +72,4 @@ Route::post('/add-customer', 'CheckoutController@add_customer');
 Route::post('/save-checkout-customer', 'CheckoutController@save_checkout_customer');
 Route::get('/payment', 'CheckoutController@payment');
 Route::get('/logout-customer', 'CheckoutController@logout_customer');
-Route::post('/login-customer', 'CheckoutController@login_customer');
+Route::post('login-customer', 'CheckoutController@login_customer');

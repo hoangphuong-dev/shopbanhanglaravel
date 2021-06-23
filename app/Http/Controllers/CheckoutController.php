@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use DB;
 use Session;
-use App\Http\Requests;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Redirect;
 use Cart;
 session_start();
@@ -44,7 +42,7 @@ class CheckoutController extends Controller {
 		$data['shipping_note'] = $request->shipping_note;
 
 		$shipping_id = DB::table('tbl_shipping')->insertGetId($data);
-		echo "shipping_id";
+		// echo "shipping_id";
 		Session::put('shipping_id', $shipping_id);
 		return Redirect::to('/payment');
 	}
@@ -55,17 +53,17 @@ class CheckoutController extends Controller {
 		Session::flush();
 		return Redirect::to('login-checkout');
 	}
+	// function này đang lỗi => fixbug này sau 
 	public function login_customer(Request $request){
 		$email = $request->email_account;
 		$password = md5($request->password_account);
+
 		$result = DB::table('tbl_customer')->where('customer_email', $email)->where('customer_password', $password)->first();
-		// echo $result;
-		die($result);
-		// if($result) {
-		// 	Session::put('customer_id', $result->customer_id);
-		// 	return Redirect::to('/checkout');
-		// } else {
-		// 	return Redirect::to('logn-checkout');bb
-		// }
+		if($result) {
+			Session::put('customer_id', $result->customer_id);
+			return Redirect::to('/show-checkout');
+		} else {
+			return Redirect::to('login-checkout');
+		}
 	}
 }

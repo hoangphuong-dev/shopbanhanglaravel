@@ -8,8 +8,9 @@
 				<div class="login-form"><!--login form-->
 					<h2>Đăng nhập vào tài khoản</h2>
 					<form action="{{ URL::to('/login-customer') }}" method="POST">
+						{{ csrf_field() }}
 						<input type="text" name="email_account" placeholder="Email" />
-						<input type="password" name="password_acount" placeholder="Password" />
+						<input type="password" name="password_account" placeholder="Password" />
 						<span>
 							<input type="checkbox" class="checkbox"> 
 							Ghi nhớ đăng nhập
